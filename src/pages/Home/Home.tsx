@@ -1,51 +1,43 @@
-import { useGetProductsQuery } from '../../services/productsApi';
-import ProductGrid from '../../components/ProductGrid/ProductGrid';
-import './Home.css';
+import { useGetProductsQuery } from "../../services/productsApi";
+import ProductGrid from "../../components/ProductGrid/ProductGrid";
+import Header from "../../components/Header/Header";
+import CategoryShowcase from "../../components/CategoryShowcase/CategoryShowcase";
+import Services from '../../components/Services/Services';
+import FeaturedPosts from '../../components/FeaturedPosts/FeaturedPosts';
+import "./Home.css";
 
 function Home() {
-  const { data, isLoading, isError } = useGetProductsQuery();
-
-  if (isLoading) {
-    return (
-      <main className="home">
-        <p>Loading products...</p>
-      </main>
-    );
-  }
-
-  if (isError || !data) {
-    return (
-      <main className="home">
-        <p>Unable to load products.</p>
-      </main>
-    );
-  }
-
-  const featuredProducts = data.products.slice(0, 10);
-
+  const { data } = useGetProductsQuery();
+  const products = data?.products ?? [];
   return (
-    <main className="home">
-      <section className="featured-products">
-        <div className="featured-products__heading">
-          <p className="featured-products__eyebrow">
-            Featured Products
-          </p>
+    <>
+      <Header />
 
-          <h1>Bestseller Products</h1>
+      <main className="home">
+        <CategoryShowcase />
 
-          <p>
-            Problems trying to resolve the conflict between
-            products and design.
-          </p>
-        </div>
+        <section className="featured-products">
+          <div className="featured-products__heading">
+            <p className="featured-products__eyebrow">Featured Products</p>
 
-        <ProductGrid products={featuredProducts} />
+            <h1>Bestseller Products</h1>
 
-        <button className="featured-products__load-more">
-          Load More Products
-        </button>
-      </section>
-    </main>
+            <p>
+              Problems trying to resolve the conflict between products and
+              design.
+            </p>
+          </div>
+
+          <ProductGrid products={products} columns={5} />
+
+          <button className="featured-products__load-more">
+            Load More Products
+          </button>
+        </section>
+         <Services />
+         <FeaturedPosts/>
+      </main>
+    </>
   );
 }
 

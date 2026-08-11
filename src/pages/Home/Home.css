@@ -23,15 +23,17 @@
 .featured-products__heading h1 {
   margin: 0 0 12px;
   color: #252b42;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .featured-products__heading p:last-child {
-  margin: 0;
+  max-width: 420px;
+  margin: 0 auto;
   color: #737373;
-  font-size: 14px;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .featured-products__load-more {
@@ -48,7 +50,7 @@
 
 .featured-products__load-more:hover {
   background: #23a6f0;
-  color: white;
+  color: #ffffff;
 }
 
 @media (max-width: 768px) {

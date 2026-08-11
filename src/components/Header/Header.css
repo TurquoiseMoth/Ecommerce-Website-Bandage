@@ -1,0 +1,102 @@
+.site-header {
+  width: 100%;
+  background: #ffffff;
+}
+
+.top-bar {
+  min-height: 62px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #23856d;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.top-bar__contact,
+.top-bar__socials {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.top-bar__message {
+  margin: 0;
+}
+
+.top-bar__socials {
+  gap: 14px;
+}
+
+.main-nav {
+  min-height: 80px;
+  padding: 0 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.main-nav__logo {
+  color: #252b42;
+  font-size: 24px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.main-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-right: auto;
+  margin-left: 70px;
+}
+
+.main-nav__links a {
+  color: #737373;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.main-nav__links a:hover {
+  color: #252b42;
+}
+
+.main-nav__shop {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.main-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.main-nav__actions a {
+  color: #23a6f0;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.main-nav__actions button {
+  position: relative;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #23a6f0;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.main-nav__actions button span {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 10px;
+}

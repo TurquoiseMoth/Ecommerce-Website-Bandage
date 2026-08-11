@@ -4,11 +4,20 @@ import './ProductGrid.css';
 
 interface ProductGridProps {
   products: Product[];
+  columns?: number;
 }
 
-function ProductGrid({ products }: ProductGridProps) {
+function ProductGrid({
+  products,
+  columns = 4,
+}: ProductGridProps) {
   return (
-    <section className="product-grid">
+    <section
+      className="product-grid"
+      style={{
+        '--product-grid-columns': columns,
+      } as React.CSSProperties}
+    >
       {products.map((product) => (
         <ProductCard
           key={product.id}

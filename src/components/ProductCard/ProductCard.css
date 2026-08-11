@@ -63,3 +63,22 @@
   color: #666666;
   font-size: 16px;
 }
+
+.product-card__prices {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.product-card__original-price {
+  color: #bdbdbd;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: line-through;
+}
+
+.product-card__discounted-price {
+  color: #23856d;
+  font-size: 14px;
+  font-weight: 700;
+}
