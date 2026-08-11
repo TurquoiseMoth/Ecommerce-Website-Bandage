@@ -2,8 +2,11 @@ import { useGetProductsQuery } from "../../services/productsApi";
 import ProductGrid from "../../components/ProductGrid/ProductGrid";
 import Header from "../../components/Header/Header";
 import CategoryShowcase from "../../components/CategoryShowcase/CategoryShowcase";
-import Services from '../../components/Services/Services';
-import FeaturedPosts from '../../components/FeaturedPosts/FeaturedPosts';
+import Services from "../../components/Services/Services";
+import FeaturedPosts from "../../components/FeaturedPosts/FeaturedPosts";
+import TestimonialCard from "../../components/Testimonials/TestimonialCard";
+import CtaBanner from "../../components/Services/CtaBanner";
+import Footer from "../../components/Footer/Footer";
 import "./Home.css";
 
 function Home() {
@@ -34,9 +37,12 @@ function Home() {
             Load More Products
           </button>
         </section>
-         <Services />
-         <FeaturedPosts/>
+        <Services />
+        <FeaturedPosts />
+        <TestimonialCard />
+        <CtaBanner />
       </main>
+      <Footer />
     </>
   );
 }

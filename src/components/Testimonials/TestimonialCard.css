@@ -1,0 +1,96 @@
+/* Main wrapper handles the 50/50 split on desktop */
+.testimonial-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 80px 20px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+/* Left side alignment */
+.testimonial__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.testimonial__eyebrow {
+  margin: 0 0 40px;
+  color: #252b42;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* New Avatar Styling */
+.testimonial__avatar-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.testimonial__stars {
+  margin-bottom: 20px;
+  color: #f3cd03;
+  font-size: 22px;
+  letter-spacing: 4px;
+}
+
+.testimonial__content blockquote {
+  margin: 0 auto 28px;
+  color: #737373;
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 420px; 
+}
+
+/* Colors flipped to match design */
+.testimonial__author h3 {
+  margin: 0 0 4px;
+  color: #23a6f0; 
+  font-size: 14px;
+}
+
+.testimonial__author p {
+  margin: 0;
+  color: #252b42; 
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Right side 3x3 Grid */
+.testimonial__gallery {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.testimonial__gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .testimonial-section {
+    flex-direction: column;
+    padding: 56px 20px;
+    gap: 40px;
+  }
+
+  .testimonial__eyebrow {
+    font-size: 20px;
+  }
+
+  .testimonial__content blockquote {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,41 @@
+.quantity-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid #ececec;
+  border-radius: 999px;
+  background: #ffffff;
+}
+
+.quantity-control__btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #23a6f0;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #23a6f0;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.quantity-control__btn:hover {
+  background: #23a6f0;
+  color: #ffffff;
+}
+
+.quantity-control__input {
+  width: 32px;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #252b42;
+  outline: none;
+}

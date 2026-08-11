@@ -1,7 +1,7 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { Product } from '../types/product';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import type { Product } from "../types/product";
 
-interface ProductsResponse {
+export interface ProductsResponse {
   products: Product[];
   total: number;
   skip: number;
@@ -9,17 +9,20 @@ interface ProductsResponse {
 }
 
 export const productsApi = createApi({
-  reducerPath: 'productsApi',
+  reducerPath: "productsApi",
 
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://dummyjson.com',
+    baseUrl: "https://dummyjson.com",
   }),
 
   endpoints: (builder) => ({
     getProducts: builder.query<ProductsResponse, void>({
-      query: () => '/products',
+      query: () => "/products",
+    }),
+    getProductById: builder.query<Product, string | number>({
+      query: (id) => `/products/${id}`,
     }),
   }),
 });
 
-export const { useGetProductsQuery } = productsApi;
+export const { useGetProductsQuery, useGetProductByIdQuery } = productsApi;

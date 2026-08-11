@@ -1,6 +1,19 @@
-import './Header.css';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useAppSelector } from "../../app/store";
+import { selectCartItems } from "../../features/cart/cartSlice";
+import "./Header.css";
 
 function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const cartItems = useAppSelector(selectCartItems);
+  const cartCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header className="site-header">
       <div className="top-bar">
@@ -47,17 +60,77 @@ function Header() {
             ⌕
           </button>
 
-          <button type="button" aria-label="Shopping cart">
+          <Link to="/cart" className="main-nav__cart" aria-label="Shopping cart">
             🛒
-            <span>1</span>
-          </button>
+            <span>{cartCount}</span>
+          </Link>
 
           <button type="button" aria-label="Wishlist">
             ♡
             <span>1</span>
           </button>
         </div>
+
+        <button
+          type="button"
+          className="main-nav__menu-toggle"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          {menuOpen ? "×" : "⋮"}
+        </button>
       </nav>
+
+      {menuOpen && (
+        <div className="mobile-menu">
+          <nav className="mobile-menu__links" aria-label="Mobile navigation">
+            <a href="/" onClick={closeMenu}>
+              Home
+            </a>
+            <a href="/shop" onClick={closeMenu}>
+              Shop <span>⌄</span>
+            </a>
+            <a href="/about" onClick={closeMenu}>
+              About
+            </a>
+            <a href="/blog" onClick={closeMenu}>
+              Blog
+            </a>
+            <a href="/contact" onClick={closeMenu}>
+              Contact
+            </a>
+            <a href="/pages" onClick={closeMenu}>
+              Pages
+            </a>
+          </nav>
+
+          <div className="mobile-menu__actions">
+            <a href="/login" onClick={closeMenu}>
+              ♙ Login / Register
+            </a>
+
+            <button type="button" aria-label="Search">
+              ⌕
+            </button>
+
+            <Link
+              to="/cart"
+              className="mobile-menu__cart"
+              aria-label="Shopping cart"
+              onClick={closeMenu}
+            >
+              🛒
+              <span>{cartCount}</span>
+            </Link>
+
+            <button type="button" aria-label="Wishlist">
+              ♡
+              <span>1</span>
+            </button>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

@@ -1,0 +1,293 @@
+.product-details-page {
+  background-color: #fafafa;
+  color: #252b42;
+}
+
+.container {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Breadcrumb */
+.breadcrumb-container {
+  padding: 24px 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.breadcrumb-container a {
+  color: #252b42;
+  text-decoration: none;
+}
+
+.breadcrumb-container .separator {
+  margin: 0 8px;
+  color: #bdbdbd;
+}
+
+.breadcrumb-container .current {
+  color: #737373;
+}
+
+/* Hero Section */
+.product-hero {
+  display: flex;
+  gap: 40px;
+  padding-bottom: 48px;
+}
+
+.product-hero > .product-gallery,
+.product-hero > .product-info {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Tabbed Section */
+.product-tabs-section {
+  background: #ffffff;
+  padding: 48px 0 40px;
+  margin-bottom: 48px;
+}
+
+.tabs-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 56px;
+  border-bottom: 1px solid #ececec;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 16px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #737373;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  color: #252b42;
+  border-bottom: 2px solid #23a6f0;
+}
+
+.tab-btn__count {
+  color: #23856d;
+}
+
+.tab-content-wrapper {
+  padding-top: 40px;
+}
+
+.description-grid {
+  display: flex;
+  gap: 60px;
+}
+
+.text-col {
+  flex: 0 0 55%;
+  max-width: 55%;
+}
+
+.text-col h3 {
+  font-size: 30px;
+  font-weight: 600;
+  color: #252b42;
+  margin: 0 0 24px;
+}
+
+.text-col p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #858585;
+}
+
+.text-col p + p {
+  margin-top: 16px;
+}
+
+.quote-box {
+  border-left: 4px solid #23856d;
+  margin: 28px 0;
+  padding-left: 20px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #858585;
+}
+
+.image-col {
+  flex: 1 1 45%;
+  min-width: 0;
+}
+
+.tab-banner-img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 555 / 500;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Best Sellers */
+.bestseller-section {
+  padding-bottom: 48px;
+}
+
+.bestseller-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #252b42;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 12px;
+  border-bottom: 1px solid #ececec;
+  padding-bottom: 12px;
+}
+
+.bestseller-section .product-grid {
+  gap: 16px;
+}
+
+.bestseller-section .product-card {
+  max-width: none;
+  background: #ffffff;
+  border-radius: 0;
+}
+
+.bestseller-section .product-card__image-wrapper {
+  aspect-ratio: 4 / 5;
+}
+
+.bestseller-section .product-card__content {
+  padding: 12px 4px 14px;
+}
+
+.bestseller-section .product-card__category {
+  margin: 0 0 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #737373;
+  text-transform: none;
+}
+
+.bestseller-section .product-card__department {
+  display: none;
+}
+
+.bestseller-section .product-card__title {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #252b42;
+}
+
+.bestseller-section .product-card__prices {
+  gap: 6px;
+}
+
+.bestseller-section .product-card__original-price {
+  font-size: 12px;
+  font-weight: 600;
+  color: #bdbdbd;
+  text-decoration: line-through;
+}
+
+.bestseller-section .product-card__discounted-price {
+  font-size: 12px;
+  font-weight: 700;
+  color: #23856d;
+}
+
+.bestseller-section .product-card__rating {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .bestseller-section .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .bestseller-section .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+/* Companies / Social Proof */
+.companies-section {
+  background: #f4f4f5;
+  padding: 48px 24px;
+}
+
+.companies-section__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.companies-logo {
+  display: block;
+  height: 24px;
+  width: auto;
+  color: #52525b;
+  fill: currentColor;
+  opacity: 0.75;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.companies-logo:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .product-hero {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .description-grid {
+    flex-direction: column;
+  }
+
+  .text-col {
+    flex-basis: auto;
+    max-width: 100%;
+  }
+
+  .product-info__actions {
+    width: 100%;
+  }
+
+  .product-info__select-options {
+    flex: 1;
+    width: auto;
+    min-width: 140px;
+    height: 44px;
+  }
+
+  .companies-section__row {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .breadcrumb-container {
+    text-align: center;
+  }
+
+  .tabs-header {
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+}
