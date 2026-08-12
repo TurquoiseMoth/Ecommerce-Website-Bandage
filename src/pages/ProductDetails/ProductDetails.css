@@ -52,6 +52,11 @@
   margin-bottom: 48px;
 }
 
+.product-tabs-section.container {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .tabs-header {
   display: flex;
   justify-content: center;

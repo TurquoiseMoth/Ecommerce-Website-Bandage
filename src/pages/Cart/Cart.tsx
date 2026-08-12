@@ -57,6 +57,70 @@ function Cart() {
         </div>
       </nav>
 
+      {items.length > 0 && (
+        <section className="cart-top-section">
+          <div className="cart-container">
+            <div className="cart-layout">
+              <section className="cart-items">
+                <h1 className="cart-title">Shopping Cart</h1>
+
+                <div className="cart-items__header">
+                  <span>Item Details</span>
+                  <span>Quantity</span>
+                  <span>Price</span>
+                </div>
+
+                <div className="cart-items__list">
+                  {items.map((item) => (
+                    <CartItemRow
+                      key={item.id}
+                      item={item}
+                      onIncrease={handleIncrease}
+                      onDecrease={handleDecrease}
+                      onRemove={handleRemove}
+                    />
+                  ))}
+                </div>
+              </section>
+
+              <aside className="cart-summary">
+                <div className="cart-summary__header">
+                  <h2 className="cart-summary__title">Order Summary</h2>
+                  <span className="cart-summary__count">({items.length} items)</span>
+                </div>
+
+                <div className="cart-summary__row">
+                  <span>Subtotal</span>
+                  <span>${subtotal.toFixed(2)}</span>
+                </div>
+
+                <div className="cart-summary__row">
+                  <span>Delivery Charges</span>
+                  <span>${DELIVERY_CHARGES.toFixed(2)}</span>
+                </div>
+
+                <div className="cart-summary__row cart-summary__row--total">
+                  <span>Total</span>
+                  <span>${total.toFixed(2)}</span>
+                </div>
+
+                <button type="button" className="cart-summary__checkout">
+                  Proceed to Checkout
+                </button>
+
+                <div className="cart-summary__payments" aria-hidden="true">
+                  <span>VISA</span>
+                  <span>mc</span>
+                  <span>PAYPAL</span>
+                  <span>AMEX</span>
+                  <span>G-PAY</span>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+      )}
+
       <main className="cart-main">
         <div className="cart-container">
           {items.length === 0 ? (
@@ -70,70 +134,13 @@ function Cart() {
               </Link>
             </section>
           ) : (
-            <>
-              <h1 className="cart-title">Shopping Cart</h1>
-
-              <div className="cart-layout">
-                <section className="cart-items">
-                  <div className="cart-items__header">
-                    <span>Item Details</span>
-                    <span>Quantity</span>
-                    <span>Price</span>
-                  </div>
-
-                  <div className="cart-items__list">
-                    {items.map((item) => (
-                      <CartItemRow
-                        key={item.id}
-                        item={item}
-                        onIncrease={handleIncrease}
-                        onDecrease={handleDecrease}
-                        onRemove={handleRemove}
-                      />
-                    ))}
-                  </div>
-                </section>
-
-                <aside className="cart-summary">
-                  <h2 className="cart-summary__title">Order Summary</h2>
-
-                  <div className="cart-summary__row">
-                    <span>Subtotal</span>
-                    <span>${subtotal.toFixed(2)}</span>
-                  </div>
-
-                  <div className="cart-summary__row">
-                    <span>Delivery Charges</span>
-                    <span>${DELIVERY_CHARGES.toFixed(2)}</span>
-                  </div>
-
-                  <div className="cart-summary__row cart-summary__row--total">
-                    <span>Total</span>
-                    <span>${total.toFixed(2)}</span>
-                  </div>
-
-                  <button type="button" className="cart-summary__checkout">
-                    Proceed to Checkout
-                  </button>
-
-                  <div className="cart-summary__payments" aria-hidden="true">
-                    <span>VISA</span>
-                    <span>mc</span>
-                    <span>PAYPAL</span>
-                    <span>AMEX</span>
-                    <span>G-PAY</span>
-                  </div>
-                </aside>
-              </div>
-
-              <section className="cart-related">
-                <h2 className="cart-related__title">PRODUCTS RELATED TO ITEMS IN YOUR CART</h2>
-                <ProductGrid
-                  products={(productsData?.products ?? []).slice(0, 8)}
-                  columns={4}
-                />
-              </section>
-            </>
+            <section className="cart-related">
+              <h2 className="cart-related__title">PRODUCTS RELATED TO ITEMS IN YOUR CART</h2>
+              <ProductGrid
+                products={(productsData?.products ?? []).slice(0, 10)}
+                columns={5}
+              />
+            </section>
           )}
         </div>
       </main>

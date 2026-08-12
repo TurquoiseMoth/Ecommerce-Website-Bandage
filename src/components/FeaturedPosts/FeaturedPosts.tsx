@@ -23,7 +23,7 @@ const posts = [
     id: 3,
     image:
       'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=800&q=80',
-    category: 'Trending',
+    category: 'New',
     title: 'Loudest à la Madison #3',
     description:
       'We focus on ergonomics and meeting you where you work. It’s only a keystroke away.',
@@ -54,13 +54,25 @@ function FeaturedPosts() {
 
             <div className="post-card__content">
               <div className="post-card__categories">
-                <span>{post.category}</span>
+                <span>Google</span>
                 <span>Trending</span>
+                <span>New</span>
               </div>
 
               <h3>{post.title}</h3>
 
               <p>{post.description}</p>
+
+              <div className="post-card__meta">
+                <span className="post-card__date">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#23a6f0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  22 April 2022
+                </span>
+                <span className="post-card__comments">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#23a6f0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                  10 comments
+                </span>
+              </div>
 
               <a href="/blog">Learn More →</a>
             </div>

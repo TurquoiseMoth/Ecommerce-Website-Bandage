@@ -70,8 +70,13 @@ function CartItemRow({
         />
       </div>
 
-      <div className="cart-item__price">
-        ${(item.price * item.quantity).toFixed(2)}
+      <div className="cart-item__price-container">
+        <div className="cart-item__price">
+          ${(item.price * item.quantity).toFixed(2)}
+        </div>
+        <div className="cart-item__price-calc">
+          ${item.price.toFixed(2)} x {item.quantity} items
+        </div>
       </div>
 
       <button

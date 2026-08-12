@@ -40,15 +40,6 @@ function ProductCard({ product }: ProductCardProps) {
             </span>
           </div>
 
-          <div className="product-card__rating">
-            <span aria-label={`Rating: ${product.rating} out of 5`}>
-              ★ ★ ★ ★ ★
-            </span>
-
-            <span className="product-card__rating-value">
-              {product.rating.toFixed(1)} ({product.reviews.length})
-            </span>
-          </div>
         </div>
       </Link>
     </article>
