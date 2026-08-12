@@ -1,32 +1,32 @@
-import './FeaturedPosts.css';
+import "./FeaturedPosts.css";
 
 const posts = [
   {
     id: 1,
     image:
-      'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80',
-    category: 'Google',
-    title: 'Loudest à la Madison #1',
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80",
+    category: "Google",
+    title: "Loudest à la Madison #1",
     description:
-      'We focus on ergonomics and meeting you where you work. It’s only a keystroke away.',
+      "We focus on ergonomics and meeting you where you work. It’s only a keystroke away.",
   },
   {
     id: 2,
     image:
-      'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80',
-    category: 'Trending',
-    title: 'Loudest à la Madison #2',
+      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80",
+    category: "Trending",
+    title: "Loudest à la Madison #2",
     description:
-      'We focus on ergonomics and meeting you where you work. It’s only a keystroke away.',
+      "We focus on ergonomics and meeting you where you work. It’s only a keystroke away.",
   },
   {
     id: 3,
     image:
-      'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=800&q=80',
-    category: 'New',
-    title: 'Loudest à la Madison #3',
+      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=800&q=80",
+    category: "New",
+    title: "Loudest à la Madison #3",
     description:
-      'We focus on ergonomics and meeting you where you work. It’s only a keystroke away.',
+      "We focus on ergonomics and meeting you where you work. It’s only a keystroke away.",
   },
 ];
 
@@ -43,11 +43,7 @@ function FeaturedPosts() {
         {posts.map((post) => (
           <article className="post-card" key={post.id}>
             <div className="post-card__image-wrapper">
-              <img
-                src={post.image}
-                alt=""
-                className="post-card__image"
-              />
+              <img src={post.image} alt="" className="post-card__image" />
 
               <span className="post-card__badge">NEW</span>
             </div>
@@ -65,16 +61,41 @@ function FeaturedPosts() {
 
               <div className="post-card__meta">
                 <span className="post-card__date">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#23a6f0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#23a6f0"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
                   22 April 2022
                 </span>
                 <span className="post-card__comments">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#23a6f0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#238560"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                  </svg>
                   10 comments
                 </span>
               </div>
 
-              <a href="/blog">Learn More →</a>
+              <a href="/blog">Learn More</a>
             </div>
           </article>
         ))}

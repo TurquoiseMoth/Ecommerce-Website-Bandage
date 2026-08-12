@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;420;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;420;700&display=swap");
 
 :root {
   --fallback-font: system-ui, sans-serif;
@@ -11,7 +11,12 @@
 }
 
 body {
-  font-family: 'Montserrat', var(--fallback-font);
+  font-family: "Montserrat", var(--fallback-font);
+  background: #fafafa;
+}
+
+div.icourt-items header {
+  background-color: #3b4148;
 }
 
 h3 {
