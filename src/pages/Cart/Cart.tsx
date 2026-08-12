@@ -135,7 +135,7 @@ function Cart() {
             </section>
           ) : (
             <section className="cart-related">
-              <h2 className="cart-related__title">PRODUCTS RELATED TO ITEMS IN YOUR CART</h2>
+              <h3 className="cart-related__title">PRODUCTS RELATED TO ITEMS IN YOUR CART</h3>
               <ProductGrid
                 products={(productsData?.products ?? []).slice(0, 10)}
                 columns={5}

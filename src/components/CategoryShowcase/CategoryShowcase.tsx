@@ -52,7 +52,11 @@ function CategoryShowcase() {
           <div className="category-card__content">
             <p>{category.items} Items</p>
 
-            <h2>{category.title}</h2>
+            {category.size === 'large' ? (
+              <h2>{category.title}</h2>
+            ) : (
+              <h3>{category.title}</h3>
+            )}
 
             <a href="/shop">Read More</a>
           </div>

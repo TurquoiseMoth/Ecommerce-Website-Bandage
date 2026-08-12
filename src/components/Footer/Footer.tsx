@@ -14,8 +14,8 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {/* TOP BAR: Brand Logo & Social Icons */}
-      <div className="footer__top">
+      {/* MIDDLE SECTION: Navigation Links & Newsletter */}
+      <div className="footer__middle">
         <div className="footer__container footer__top-content">
           <h3 className="footer__logo">Bandage</h3>
           <div className="footer__socials">
@@ -36,10 +36,7 @@ function Footer() {
             </a>
           </div>
         </div>
-      </div>
 
-      {/* MIDDLE SECTION: Navigation Links & Newsletter */}
-      <div className="footer__middle">
         <div className="footer__container footer__grid">
           
           <div className="footer__col">

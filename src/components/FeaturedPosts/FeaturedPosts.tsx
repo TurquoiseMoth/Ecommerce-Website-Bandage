@@ -53,13 +53,13 @@ function FeaturedPosts() {
             </div>
 
             <div className="post-card__content">
+              <h3>{post.title}</h3>
+
               <div className="post-card__categories">
                 <span>Google</span>
                 <span>Trending</span>
                 <span>New</span>
               </div>
-
-              <h3>{post.title}</h3>
 
               <p>{post.description}</p>
 

@@ -13,17 +13,14 @@
   box-sizing: border-box;
 }
 
-/* TOP SECTION */
-.footer__top {
-  background-color: #fafafa;
-  padding: 40px 0;
-  border-bottom: 1px solid #e6e6e6;
-}
-
+/* TOP SECTION (Now inside middle) */
 .footer__top-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 .footer__logo {
