@@ -1,196 +1,268 @@
-# Bandage Ecommerce Website — Project Notes
+## 5. Backlog (for everyone — final scope)
 
-This file is the single source of truth for the state of the codebase. It is
-written for three audiences: developers, non-developers, and AI chatbots.
-Each section says who it is for.
+The project is now in finalization mode. Do NOT add new major features unless the
+assessment requirements change.
 
----
+### Final scope
 
-## 1. What This Project Is (for non-developers)
+- [x] Landing page
+- [x] Product details page
+- [x] Shopping cart page
+- [x] Redux cart state
+- [x] RTK Query + DummyJSON integration
 
-We are rebuilding the "Bandage" ecommerce website (a Figma-style template:
-homepage, product listings, product detail pages, shopping cart) as a modern
-single-page web app. It pulls real product data (images, prices, ratings,
-reviews) live from the DummyJSON public API. The finished site is meant to look
-like the Bandage design reference and work on both desktop and mobile.
+### Remaining work
 
-Nothing here is deployed to a live URL yet — it runs locally on your computer
-via a dev server.
+1. Mobile responsiveness audit and fixes
+2. ProductCard visual/state audit
+3. Cart notification modal
+4. Image and icon audit
+5. Final Figma comparison and visual polish
+6. Loading/error/empty-state polish
+7. Convert remaining internal navigation from `href` to React Router `Link`
+8. Netlify deployment
+9. README completion
+10. Final build/lint verification
+11. Final Git history/documentation review
+12. Code walkthrough video (maximum 10 minutes)
 
----
+### Explicitly out of scope
 
-## 2. Tech Stack (for developers)
+The following are NOT required for the current submission unless Learnable
+explicitly changes the requirements:
 
-- **React 19 + TypeScript** — UI framework + type safety
-- **Vite 8** — build tool / dev server
-- **React Router 7** — client-side routing (/, /product/:id, /cart)
-- **Redux Toolkit + React-Redux** — global state (shopping cart)
-- **RTK Query** — data fetching/caching for the DummyJSON API
-- **Vanilla CSS, BEM-style class names** — per-component `.css` files imported
-  alongside each component. No UI library, no CSS framework, no Tailwind.
+- Checkout flow
+- Wishlist functionality
+- Login/register functionality
+- Search functionality
+- Shop/category listing page
+- About page
+- Blog page
+- Contact page
+- Additional placeholder routes
 
----
+Do not spend time implementing these features while the final required work
+remains unfinished.
 
-## 3. Architecture (for developers and AI chatbots)
-
-Folder responsibilities:
-
-```
-src/
-├── main.tsx               Entry point: <Provider store> + <App/>
-├── App.tsx                Router — defines all routes
-├── index.css              Global reset only
-├── app/store.ts           Redux store (cartSlice + productsApi middleware)
-├── types/product.ts       Shared Product / ProductReview interfaces
-├── services/productsApi.ts RTK Query: getProducts (→ /products),
-│                            getProductById (→ /products/:id)
-├── features/cart/cartSlice.ts  Cart reducer + selectCartItems
-├── components/            Reusable presentational components
-│   ├── Header/            Top bar + main nav + mobile menu (cart badge linked)
-│   ├── Footer/
-│   ├── ProductCard/       One product card (clickable → /product/:id)
-│   ├── ProductGrid/       Maps Product[] into ProductCards (columns prop)
-│   ├── QuantityControl/   − / + stepper with read-only value input
-│   ├── CategoryShowcase/  Homepage hero/category tiles
-│   ├── FeaturedPosts/     Homepage posts row
-│   ├── Services/          Services section + CtaBanner
-│   └── Testimonials/      TestimonialCard
-└── pages/
-    ├── Home/              Homepage: showcase + bestsellers + services +
-    │                        posts + testimonials + CTA
-    ├── ProductDetails/    Gallery, ProductInfo, tabs, bestsellers, companies
-    └── Cart/              Cart list (CartItemRow) + order summary +
-                             related products
-```
-
-Data-flow pattern:
-
-```
-Home / ProductDetails / Cart
-  → useGetProductsQuery() | useGetProductByIdQuery()   (RTK Query hooks)
-  → ProductGrid → ProductCard
-Cart
-  → useAppSelector(selectCartItems)                    (Redux state)
-  → CartItemRow → QuantityControl
-```
-
-Conventions:
-- Pages own data fetching and page layout; components are reusable and mostly
-  presentational (take explicit typed props).
-- `Product` is the single source-of-truth type for API data — never invent
-  fields that are not in `src/types/product.ts`.
-- Prices are displayed in USD `$` format (e.g. `$12.99`). The design used `€`
-  in some references, but the site-wide decision is `$`.
-- Brand colors: accent blue `#23A6F0`, success green `#23856D`, dark
-  `#252B42`, background `#FAFAFA`, muted gray `#737373`.
-- Every feature is built and verified cell-by-cell, then `npm run build` +
-  `npm run lint` must pass before moving on.
 
 ---
 
-## 4. Current State (for everyone)
+## 6. Tasks (current action plan)
 
-### Done and verified
-- [x] Vite + React + TS bootstrap, git initialized (commits on `main`).
-- [x] Redux Toolkit + RTK Query wired; DummyJSON API connected and returning
-      real products.
-- [x] Homepage: header/top-bar + mobile menu, hero/category showcase, featured
-      ("Bestseller Products") grid, services, featured posts, testimonials,
-      CTA banner, footer. Mobile layout works.
-- [x] Product details page at `/product/:id`: gallery, info/options, add to
-      cart, description/additional/reviews tabs, bestseller products grid,
-      trusted-by-companies strip, footer.
-- [x] Shopping cart page at `/cart`: item rows (image, title, stock status,
-      star rating, quantity stepper, live price), order summary
-      (subtotal + $10 delivery = total), empty state, related "RELATED
-      PRODUCTS" grid (8 products, 4 columns).
-- [x] Cart state via Redux: add, remove, update quantity, clear;
-      `selectCartItems` selector. Cart count badge in header + mobile menu
-      linked to `/cart`.
-- [x] `QuantityControl` reusable stepper.
-- [x] `npm run build` and `npm run lint` pass (latest run: green).
+### Phase 1 — Mobile Responsiveness
 
-### Currently open / known gaps
-- "Proceed to Checkout" button on the cart page does nothing yet (no checkout
-  page/flow).
-- "Load More Products" button on the homepage is visual-only (no handler).
-- Top-bar / nav links mostly use `href="/..."` anchors (full page reload on
-  Home) — not all converted to client-side `Link`.
-- `public/icons.svg` sprite exists but is not yet used across the UI.
-- No loading skeletons / polished error states on every page (minimal
-  fallbacks used).
-- Not deployed; static `dist/` build only.
+- [ ] Audit Home page on mobile
+- [ ] Audit Product Details page on mobile
+- [ ] Audit Cart page on mobile
+- [ ] Fix horizontal overflow
+- [ ] Fix broken/crowded layouts
+- [ ] Fix typography and spacing at small widths
+- [ ] Fix product grids and image sizing
+- [ ] Fix navigation/mobile menu
+- [ ] Verify tablet layouts
+- [ ] Verify desktop layouts
 
-### Route map
-- `/` — Home
-- `/product/:id` — Product details
-- `/cart` — Shopping cart
+Test at minimum:
 
----
+- 320px
+- 375px
+- 390px
+- 430px
+- 768px
+- 1024px
+- 1440px
 
-## 5. Backlog (for everyone — not yet started)
 
-1. Checkout flow / page (wire the "Proceed to Checkout" button).
-2. Wishlist functionality (heart buttons are visual-only, badge shows "1").
-3. Real login/register flow (top-bar "Login / Register" is a placeholder).
-4. Search functionality (search icons are non-functional).
-5. Shop / category listing page (`/shop` links are placeholders).
-6. About / Blog / Contact / Pages routes (placeholder links).
-7. "Load More Products" on homepage.
-8. Convert remaining `href="/..."` anchors to router `Link`s.
-9. Loading skeletons / richer error + empty states.
-10. Adopt `public/icons.svg` icons across the UI (see Tasks below).
-11. Netlify deployment.
-12. Final Figma comparison / polish pass.
+### Phase 2 — Product Card Audit
 
----
+- [ ] Compare ProductCard against Figma
+- [ ] Verify default state
+- [ ] Verify hover state
+- [ ] Verify product image sizing
+- [ ] Verify title typography
+- [ ] Verify rating display
+- [ ] Verify discount price
+- [ ] Verify original price
+- [ ] Verify stock/low-stock/sold-out states where applicable
+- [ ] Verify mobile appearance
+- [ ] Verify ProductCard navigation
+- [ ] Remove any duplicated or unnecessary styling
 
-## 6. Tasks (current to-do list for the next session)
 
-1. **Update / crosscheck the product card states** — review ProductCard for
-   all visual states (default, hover, sold-out/low-stock using `stock`, rating
-   display, discount pricing) against the design reference; fix any missing or
-   incorrect states.
-2. **Add cart notification modal from design** — when a product is added to
-   the cart, show the confirmation/cart notification modal described in the
-   design reference (wire it to the add-to-cart action on the product details
-   page).
-3. **Crosscheck image/icon implementation** — audit all images and icons
-   across the site against the design reference; adopt `public/icons.svg`
-   where appropriate, replace any placeholder glyph characters (☎ ✉ ⌕ 🛒 ♡ 🗑
-   etc.) with proper icon usage, and verify image sources/sizes.
-4. make mobile design of all screens proper
+### Phase 3 — Cart Notification
 
----
+- [ ] Implement the cart notification/modal from the design
+- [ ] Trigger it after adding a product to cart
+- [ ] Connect it to the existing Redux cart action
+- [ ] Allow the user to dismiss it
+- [ ] Verify it works on desktop
+- [ ] Verify it works on mobile
+- [ ] Verify it does not break the existing cart flow
 
-## 7. Commands (for developers and AI chatbots)
 
-```
-npm run dev       # start local dev server (Vite)
-npm run build     # tsc -b && vite build  (type-check + production build)
-npm run lint      # eslint .
-npm run preview   # serve the built dist/
-```
+### Phase 4 — Images and Icons
 
-- API: `https://dummyjson.com/products` and `/products/:id`
-- Browser check after each change: Home `/`, product `/product/1`, cart `/cart`.
+- [ ] Audit all images against the Figma design
+- [ ] Verify image sources
+- [ ] Verify image dimensions/aspect ratios
+- [ ] Audit all icons
+- [ ] Replace placeholder glyphs where appropriate
+- [ ] Use `public/icons.svg` where appropriate
+- [ ] Verify header icons
+- [ ] Verify cart icons
+- [ ] Verify wishlist icons
+- [ ] Verify contact/social icons
+- [ ] Verify delete/quantity icons
+- [ ] Remove unused icon code
 
----
 
-## 8. Handoff Notes (for AI chatbots)
+### Phase 5 — Final Figma Comparison
 
-- This is a snapshot, not a live tree — run `git status` / `git diff` before
-  proposing changes; a cell may already be partially done.
-- Continue the established architecture (React + TS + Vanilla BEM CSS + Redux
-  Toolkit + RTK Query). Do not introduce new frameworks/libraries.
-- Work in small increments and verify each step (`npm run build` + `npm run
-  lint` + browser check) before moving on.
-- Use explicit typed props; keep components small and single-purpose.
-- Do not invent `Product` fields or API behavior beyond `src/types/product.ts`
-  and DummyJSON.
-- Prices are `$` USD. Use brand colors listed in section 3.
-- Do not commit unless asked.
+Compare the implementation section-by-section against Figma.
 
----
+- [ ] Header
+- [ ] Hero/category showcase
+- [ ] Bestseller products
+- [ ] Services
+- [ ] Featured posts
+- [ ] Testimonials
+- [ ] CTA banner
+- [ ] Footer
+- [ ] Product details
+- [ ] Cart
 
-_Last updated: 2026-08-11. This file replaces the old `AIupdate.md`._
+For each section verify:
+
+- [ ] Layout
+- [ ] Spacing
+- [ ] Typography
+- [ ] Colors
+- [ ] Borders
+- [ ] Border radius
+- [ ] Shadows
+- [ ] Images
+- [ ] Icons
+- [ ] Alignment
+- [ ] Responsive behavior
+
+
+### Phase 6 — Functional Polish
+
+- [ ] Verify product API loading state
+- [ ] Verify API error state
+- [ ] Verify empty states
+- [ ] Verify cart add/remove
+- [ ] Verify quantity increment/decrement
+- [ ] Verify price calculations
+- [ ] Verify cart total
+- [ ] Verify cart badge
+- [ ] Verify product navigation
+- [ ] Verify no invalid quantity actions
+- [ ] Verify no console errors
+
+
+### Phase 7 — Navigation and Code Cleanup
+
+- [ ] Convert remaining internal `href="/..."` navigation to React Router `Link`
+- [ ] Check component responsibilities
+- [ ] Check TypeScript types
+- [ ] Remove dead code
+- [ ] Remove unused imports
+- [ ] Remove duplicated CSS
+- [ ] Check BEM naming consistency
+- [ ] Verify folder structure
+- [ ] Verify Redux state flow
+- [ ] Verify RTK Query architecture
+- [ ] Confirm no unnecessary dependencies were introduced
+
+
+### Phase 8 — Verification
+
+Run:
+
+```bash
+npm run lint
+npm run build
+ Lint passes
+ Build passes
+ Test /
+ Test /product/1
+ Test /cart
+ Test mobile layouts
+ Test desktop layouts
+ Check browser console for errors
+Phase 9 — Deployment
+ Deploy production build to Netlify
+ Verify deployed homepage
+ Verify deployed product page
+ Verify deployed cart
+ Verify API works on deployed site
+ Verify mobile layout on deployed site
+ Record final Netlify URL
+Phase 10 — README
+
+README must contain:
+
+ Project overview
+ Tech stack
+ Project structure/architecture
+ Installation instructions
+ Local development instructions
+ Build instructions
+ Deployment instructions
+ Netlify live URL
+ Implementation assumptions/notes
+Phase 11 — Git Review
+ Review commit history
+ Confirm commits are meaningful and incremental
+ Confirm commit messages are descriptive
+ Remove accidental/unnecessary changes
+ Confirm final working tree is clean
+ Do NOT create new commits unless needed/asked
+Phase 12 — Code Walkthrough Video
+
+Maximum length: 10 minutes.
+
+Cover:
+
+ Demonstrate completed application
+ Explain project architecture
+ Explain folder structure
+ Explain Redux Toolkit implementation
+ Explain RTK Query implementation
+ Explain product data flow
+ Explain cart state flow
+ Explain important design decisions
+ Explain major challenges and solutions
+ Explain trade-offs
+ Mention improvements that could be made with more time
+ Briefly review Git history
+
+Final check:
+
+ Video is 10 minutes or less
+ Voice narration is clear
+ Application is demonstrated successfully
+ No unfinished feature is presented as complete
+7. Definition of Done
+
+The project is considered finished only when:
+
+ Landing page matches the Figma closely
+ Product details page is polished
+ Cart page is polished
+ All screens work properly on mobile
+ Desktop/tablet layouts work correctly
+ Product API works correctly
+ Redux cart works correctly
+ RTK Query works correctly
+ Loading/error/empty states are handled
+ No major visual inconsistencies remain
+ npm run lint passes
+ npm run build passes
+ Project is deployed to Netlify
+ README is complete
+ Git history is presentable
+ Walkthrough video is completed and ≤10 minutes
+
+No new features after this point. Final polish, verification, and submission only.

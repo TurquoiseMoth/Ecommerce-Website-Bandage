@@ -25,7 +25,7 @@ function ProductInfo({ product, onAddToCart }: ProductInfoProps) {
           </span>
         </span>
         <span className="product-info__reviews-count">
-          {product.rating.toFixed(1)} ({product.reviews.length} reviews)
+          {product.reviews.length} reviews
         </span>
       </div>
 

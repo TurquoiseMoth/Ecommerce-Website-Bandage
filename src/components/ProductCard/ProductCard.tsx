@@ -24,11 +24,11 @@ function ProductCard({ product }: ProductCardProps) {
         </div>
 
         <div className="product-card__content">
+          <h2 className="product-card__title">{product.title}</h2>
+
           <p className="product-card__category">{product.category}</p>
 
           <p className="product-card__department">{product.category}</p>
-
-          <h2 className="product-card__title">{product.title}</h2>
 
           <div className="product-card__prices">
             <span className="product-card__original-price">
@@ -37,16 +37,6 @@ function ProductCard({ product }: ProductCardProps) {
 
             <span className="product-card__discounted-price">
               ${discountedPrice.toFixed(2)}
-            </span>
-          </div>
-
-          <div className="product-card__rating">
-            <span aria-label={`Rating: ${product.rating} out of 5`}>
-              ★ ★ ★ ★ ★
-            </span>
-
-            <span className="product-card__rating-value">
-              {product.rating.toFixed(1)} ({product.reviews.length})
             </span>
           </div>
         </div>

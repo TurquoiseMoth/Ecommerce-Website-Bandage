@@ -15,7 +15,7 @@ function QuantityControl({
     <div className="quantity-control">
       <button
         type="button"
-        className="quantity-control__btn"
+        className="quantity-control__btn quantity-control__btn--minus"
         onClick={onDecrease}
         aria-label="Decrease quantity"
       >
@@ -31,7 +31,7 @@ function QuantityControl({
 
       <button
         type="button"
-        className="quantity-control__btn"
+        className="quantity-control__btn quantity-control__btn--plus"
         onClick={onIncrease}
         aria-label="Increase quantity"
       >

@@ -56,7 +56,6 @@
 
 .main-nav__links a {
   color: #737373;
-  font-size: 16px;
   font-weight: 600;
   text-decoration: none;
 }
@@ -79,7 +78,6 @@
 
 .main-nav__actions a {
   color: #23a6f0;
-  font-size: 15px;
   font-weight: 700;
   text-decoration: none;
 }
@@ -178,7 +176,6 @@
 
   .mobile-menu__links a {
     color: #252b42;
-    font-size: 18px;
     font-weight: 600;
     text-decoration: none;
   }
@@ -192,7 +189,6 @@
 
   .mobile-menu__actions a {
     color: #23a6f0;
-    font-size: 14px;
     font-weight: 700;
     text-decoration: none;
   }

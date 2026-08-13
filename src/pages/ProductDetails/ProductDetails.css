@@ -14,7 +14,6 @@
 /* Breadcrumb */
 .breadcrumb-container {
   padding: 24px 0;
-  font-size: 14px;
   font-weight: 700;
 }
 
@@ -30,6 +29,9 @@
 
 .breadcrumb-container .current {
   color: #737373;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
 }
 
 /* Hero Section */
@@ -50,6 +52,11 @@
   background: #ffffff;
   padding: 48px 0 40px;
   margin-bottom: 48px;
+}
+
+.product-tabs-section.container {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .tabs-header {

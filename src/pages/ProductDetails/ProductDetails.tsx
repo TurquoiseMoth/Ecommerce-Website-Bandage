@@ -62,8 +62,9 @@ const ProductDetails: React.FC = () => {
         <ProductInfo product={product} onAddToCart={handleAddToCart} />
       </section>
 
-      <section className="product-tabs-section container">
-        <div className="tabs-header">
+      <section className="product-tabs-section">
+        <div className="container">
+          <div className="tabs-header">
           <button
             className={`tab-btn ${activeTab === "desc" ? "active" : ""}`}
             onClick={() => setActiveTab("desc")}
@@ -113,15 +114,16 @@ const ProductDetails: React.FC = () => {
             <div className="tab-content">
               <p>No customer reviews yet. Be the first to leave a review!</p>
             </div>
-          )}
+            )}
+          </div>
         </div>
       </section>
 
       <section className="bestseller-section container">
         <h2 className="bestseller-title">BESTSELLER PRODUCTS</h2>
         <ProductGrid
-          products={(productsData?.products ?? []).slice(0, 8)}
-          columns={4}
+          products={(productsData?.products ?? []).slice(0, 10)}
+          columns={5}
         />
       </section>
 
