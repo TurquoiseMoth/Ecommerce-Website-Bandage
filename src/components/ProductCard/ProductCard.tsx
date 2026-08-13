@@ -24,11 +24,12 @@ function ProductCard({ product }: ProductCardProps) {
         </div>
 
         <div className="product-card__content">
-          <h2 className="product-card__title">{product.title}</h2>
+          <h5 className="product-card__title">{product.title}</h5>
 
-          <p className="product-card__category">{product.category}</p>
-
-          <p className="product-card__department">{product.category}</p>
+          <p className="product-card__department">
+            {product.category.charAt(0).toUpperCase() +
+              product.category.slice(1)}
+          </p>
 
           <div className="product-card__prices">
             <span className="product-card__original-price">

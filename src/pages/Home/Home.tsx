@@ -34,7 +34,7 @@ function Home() {
           <ProductGrid products={products.slice(0, 10)} columns={5} />
 
           <button className="featured-products__load-more">
-            Load More Products
+            LOAD MORE PRODUCTS
           </button>
         </section>
         <Services />

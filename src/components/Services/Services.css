@@ -11,14 +11,19 @@
 
 .services__heading > p {
   margin: 0 0 8px;
-  color: #23a6f0;
-  font-size: 14px;
-  font-weight: 700;
+  color: #737373;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.2px;
+  text-align: center;
 }
 
 .services__heading h2 {
   margin: 0 0 12px;
   color: #252b42;
+  font-family: "Montserrat", sans-serif;
   font-size: 24px;
   font-weight: 700;
   text-transform: uppercase;
@@ -60,7 +65,6 @@
   font-size: 13px;
   line-height: 1.6;
 }
-
 
 @media (max-width: 768px) {
   .services {

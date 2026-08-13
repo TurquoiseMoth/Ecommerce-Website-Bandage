@@ -1,10 +1,9 @@
 .cta-banner {
   width: 100%;
-  min-height: 600px;
+  min-height: 700px;
   background-color: #f3f3f3;
-  /* Replace URL with your background texture/utensils asset */
-  background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1600&auto=format&fit=crop');
-  background-position: center right;
+  background-image: url("/images/kitchen-utensils.jpg");
+  background-position: right center;
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -72,7 +71,9 @@
   cursor: pointer;
   letter-spacing: 0.2px;
   text-transform: uppercase;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
 }
 
 .cta-banner__btn:hover {
@@ -86,8 +87,10 @@
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .cta-banner {
+    min-height: 620px;
     padding: 60px 16px;
-    background-position: center;
+    background-position: center bottom;
+    background-size: 100% auto;
   }
 
   .cta-banner__title {

@@ -15,9 +15,13 @@
 
 .featured-products__eyebrow {
   margin: 0 0 8px;
-  color: #23a6f0;
-  font-size: 14px;
-  font-weight: 700;
+  color: #737373;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.2px;
+  text-align: center;
 }
 
 .featured-products__heading h1 {
