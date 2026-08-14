@@ -21,7 +21,6 @@
   color: #252b42;
   font-size: 24px;
   font-weight: 700;
-  text-transform: uppercase;
 }
 
 .featured-posts__grid {
@@ -55,6 +54,8 @@
   left: 20px;
   padding: 5px 10px;
   background: #e74040;
+  border-radius: 1.5px;
+  box-shadow: 0px 2px 4px 0px #0000001a;
   color: #ffffff;
   font-size: 12px;
   font-weight: 700;
@@ -83,6 +84,7 @@
   margin: 0 0 12px;
   color: #252b42;
   font-size: 18px;
+  font-weight: 400;
   line-height: 1.4;
 }
 
@@ -94,7 +96,7 @@
 }
 
 .post-card a {
-  color: #252b42;
+  color: #737373;
   font-size: 14px;
   font-weight: 700;
   text-decoration: none;

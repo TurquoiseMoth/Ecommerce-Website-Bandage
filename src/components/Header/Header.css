@@ -35,6 +35,25 @@
   gap: 14px;
 }
 
+.top-bar__socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.top-bar__socials a:hover {
+  opacity: 0.8;
+}
+
+.social-icon {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+}
+
 .main-nav {
   min-height: 80px;
   padding: 0 42px;
@@ -82,37 +101,57 @@
 }
 
 .main-nav__actions a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   color: #23a6f0;
   font-weight: 700;
   text-decoration: none;
 }
 
-.main-nav__actions button {
+.main-nav__actions a:hover {
+  opacity: 0.8;
+}
+
+.main-nav__login {
+  font-size: 14px;
+}
+
+.nav-icon-btn {
   position: relative;
   padding: 0;
   border: none;
   background: transparent;
-  color: #23a6f0;
   cursor: pointer;
-  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
 .main-nav__cart {
   position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   color: #23a6f0;
-  font-size: 24px;
-  line-height: 1;
   text-decoration: none;
 }
 
-.main-nav__actions button span,
-.main-nav__cart span {
+.nav-icon-btn span,
+.cart-count,
+.wishlist-count {
   position: absolute;
   top: -8px;
   right: -8px;
   font-size: 10px;
+  color: #23a6f0;
+  font-weight: 700;
 }
 
 .main-nav__menu-toggle {

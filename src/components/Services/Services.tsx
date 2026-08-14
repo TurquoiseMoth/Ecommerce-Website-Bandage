@@ -1,23 +1,24 @@
-import './Services.css';
+import "./Services.css";
 
 const services = [
   {
     id: 1,
-    icon: '📖',
-    title: 'Easy Wins',
-    description: 'Get your best looking smile now!',
+    icon: "/icons/easy-wins.svg",
+    title: "Easy Wins",
+    description: "Get your best looking smile now!",
   },
   {
     id: 2,
-    icon: '▣',
-    title: 'Concrete',
-    description: 'Delicate is most focused in helping you discover your most beautiful smile.',
+    icon: "/icons/concrete.svg",
+    title: "Concrete",
+    description:
+      "Delicate is most focused in helping you discover your most beautiful smile.",
   },
   {
     id: 3,
-    icon: '↗',
-    title: 'Hack Growth',
-    description: 'Overcome any hurdle or any other problem.',
+    icon: "/icons/hack-growth.svg",
+    title: "Hack Growth",
+    description: "Overcome any hurdle or any other problem.",
   },
 ];
 
@@ -29,16 +30,18 @@ function Services() {
 
         <h2>The Best Services</h2>
 
-        <span>
-          Problems trying to resolve the conflict between
-        </span>
+        <span>Problems trying to resolve the conflict between</span>
       </div>
 
       <div className="services__grid">
         {services.map((service) => (
           <article className="service-card" key={service.id}>
             <div className="service-card__icon">
-              {service.icon}
+              <img
+                src={service.icon}
+                alt={service.title}
+                className="service-icon"
+              />
             </div>
 
             <h3>{service.title}</h3>
