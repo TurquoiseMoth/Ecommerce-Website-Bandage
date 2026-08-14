@@ -1,16 +1,15 @@
 .cta-banner {
   width: 100%;
   min-height: 700px;
+  /* Keep background-color as colour fallback while the img loads */
   background-color: #f3f3f3;
-  background-image: url("/images/kitchen-utensils.jpg");
-  background-position: right center;
-  background-size: cover;
-  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 80px 20px;
   box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
 }
 
 .cta-banner__container {
@@ -19,9 +18,25 @@
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  min-height: 540px;   /* ensures the image has height to fill */
+}
+
+/* Full-cover background image as a real <img> element — more reliable
+   than CSS background-image on mobile when heights are dynamic */
+.cta-banner__bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  z-index: 0;
+  display: block;
 }
 
 .cta-banner__content {
+  position: relative;  /* sit above the absolutely-positioned bg img */
+  z-index: 1;
   max-width: 600px;
   display: flex;
   flex-direction: column;
@@ -89,8 +104,6 @@
   .cta-banner {
     min-height: 620px;
     padding: 60px 16px;
-    background-position: center bottom;
-    background-size: 100% auto;
   }
 
   .cta-banner__title {

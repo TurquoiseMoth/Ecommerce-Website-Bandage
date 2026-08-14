@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./CategoryShowcase.css";
 
 const categories = [
@@ -54,7 +55,7 @@ function CategoryShowcase() {
               <h3>{category.title}</h3>
             )}
 
-            <a href="/shop">Read More</a>
+            <Link to="/shop">Read More</Link>
           </div>
         </article>
       ))}

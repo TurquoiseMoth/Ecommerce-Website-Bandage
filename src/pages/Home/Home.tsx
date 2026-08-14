@@ -16,7 +16,8 @@ function Home() {
   const products = data?.products ?? [];
 
   const handleLoadMore = () => {
-    setDisplayCount((prev) => prev + 10);
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    setDisplayCount((prev) => prev + (isMobile ? 5 : 10));
   };
   return (
     <>

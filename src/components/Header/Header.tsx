@@ -1,18 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../../app/store";
-import { selectCartItems } from "../../features/cart/cartSlice";
 import "./Header.css";
+
+// ─── Hamburger icon (3 lines = open, X = close) ───────────────────────────────
+function HamburgerIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      className={`hamburger-icon ${open ? "hamburger-icon--open" : ""}`}
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      {/* Three bars that morph into an X via CSS transitions */}
+      <rect className="bar bar--top" x="2" y="5" width="20" height="2" rx="1" fill="#252b42" />
+      <rect className="bar bar--mid" x="2" y="11" width="20" height="2" rx="1" fill="#252b42" />
+      <rect className="bar bar--bot" x="2" y="17" width="20" height="2" rx="1" fill="#252b42" />
+    </svg>
+  );
+}
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const cartItems = useAppSelector(selectCartItems);
-  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   const closeMenu = () => setMenuOpen(false);
 
+  // ─── Scroll-lock: prevent body from scrolling behind the overlay ───────────
+  // This is standard mobile UX — the user should not interact with background
+  // content while the menu is open. Cleanup on unmount ensures no stuck lock.
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   return (
     <header className="site-header">
+      {/* ── Top promotional bar (desktop only) ── */}
       <div className="top-bar">
         <div className="top-bar__contact">
           <span>☎ (225) 555-0118</span>
@@ -25,100 +55,54 @@ function Header() {
 
         <div className="top-bar__socials">
           <span>Follow Us :</span>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
-            <img
-              src="/icons/instagram.svg"
-              alt="Instagram"
-              className="social-icon"
-            />
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <img src="/icons/instagram.svg" alt="Instagram" className="social-icon" />
           </a>
-          <a
-            href="https://youtube.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="YouTube"
-          >
-            <img
-              src="/icons/youtube.svg"
-              alt="YouTube"
-              className="social-icon"
-            />
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <img src="/icons/youtube.svg" alt="YouTube" className="social-icon" />
           </a>
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-          >
-            <img
-              src="/icons/facebook.svg"
-              alt="Facebook"
-              className="social-icon"
-            />
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <img src="/icons/facebook.svg" alt="Facebook" className="social-icon" />
           </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Twitter"
-          >
-            <img
-              src="/icons/twitter.svg"
-              alt="Twitter"
-              className="social-icon"
-            />
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <img src="/icons/twitter.svg" alt="Twitter" className="social-icon" />
           </a>
         </div>
       </div>
 
+      {/* ── Main navigation bar ── */}
       <nav className="main-nav">
-        <a href="/" className="main-nav__logo">
-          Bandage
-        </a>
+        <Link to="/" className="main-nav__logo">Bandage</Link>
 
+        {/* Desktop links */}
         <div className="main-nav__links">
-          <a href="/">Home</a>
-
-          <a href="/shop" className="main-nav__shop">
-            Shop <span>⌄</span>
-          </a>
-
-          <a href="/about">About</a>
-          <a href="/blog">Blog</a>
-          <a href="/contact">Contact</a>
-          <a href="/pages">Pages</a>
+          <Link to="/">Home</Link>
+          <Link to="/shop" className="main-nav__shop">Shop <span>⌄</span></Link>
+          <Link to="/about">About</Link>
+          <Link to="/blog">Blog</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/pages">Pages</Link>
         </div>
 
+        {/* Desktop actions */}
         <div className="main-nav__actions">
-          <a href="/login" className="main-nav__login">
+          <Link to="/login" className="main-nav__login">
             <img src="/icons/customer.svg" alt="" className="nav-icon" />
             <span>Login / Register</span>
-          </a>
-
+          </Link>
           <button type="button" aria-label="Search" className="nav-icon-btn">
             <img src="/icons/search.svg" alt="" className="nav-icon" />
           </button>
-
-          <Link
-            to="/cart"
-            className="main-nav__cart"
-            aria-label="Shopping cart"
-          >
+          <button type="button" aria-label="Shopping cart" className="nav-icon-btn">
             <img src="/icons/cart.svg" alt="" className="nav-icon" />
-            <span className="cart-count">{cartCount}</span>
-          </Link>
-
+          </button>
           <button type="button" aria-label="Wishlist" className="nav-icon-btn">
             <img src="/icons/heart.svg" alt="" className="nav-icon" />
             <span className="wishlist-count">1</span>
           </button>
         </div>
 
+        {/* Mobile hamburger toggle */}
         <button
           type="button"
           className="main-nav__menu-toggle"
@@ -126,58 +110,60 @@ function Header() {
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
         >
-          {menuOpen ? "×" : "⋮"}
+          <HamburgerIcon open={menuOpen} />
         </button>
       </nav>
 
+      {/* ── Mobile overlay backdrop ── */}
       {menuOpen && (
-        <div className="mobile-menu">
-          <nav className="mobile-menu__links" aria-label="Mobile navigation">
-            <a href="/" onClick={closeMenu}>
-              Home
-            </a>
-            <a href="/shop" onClick={closeMenu}>
-              Shop <span>⌄</span>
-            </a>
-            <a href="/about" onClick={closeMenu}>
-              About
-            </a>
-            <a href="/blog" onClick={closeMenu}>
-              Blog
-            </a>
-            <a href="/contact" onClick={closeMenu}>
-              Contact
-            </a>
-            <a href="/pages" onClick={closeMenu}>
-              Pages
-            </a>
-          </nav>
-
-          <div className="mobile-menu__actions">
-            <a href="/login" onClick={closeMenu}>
-              ♙ Login / Register
-            </a>
-
-            <button type="button" aria-label="Search">
-              ⌕
-            </button>
-
-            <Link
-              to="/cart"
-              className="mobile-menu__cart"
-              aria-label="Shopping cart"
-              onClick={closeMenu}
-            >
-              🛒
-              <span>{cartCount}</span>
-            </Link>
-
-            <button type="button" aria-label="Wishlist">
-              ♡<span>1</span>
-            </button>
-          </div>
-        </div>
+        <div
+          className="mobile-menu-backdrop"
+          onClick={closeMenu}
+          aria-hidden="true"
+        />
       )}
+
+      {/* ── Mobile slide-in menu panel ── */}
+      <div className={`mobile-menu ${menuOpen ? "mobile-menu--open" : ""}`} aria-hidden={!menuOpen}>
+        {/* Centered vertical nav links */}
+        <nav className="mobile-menu__links" aria-label="Mobile navigation">
+          <Link to="/" onClick={closeMenu} className="mobile-menu__link mobile-menu__link--active">Home</Link>
+          <Link to="/shop" onClick={closeMenu} className="mobile-menu__link">Shop</Link>
+          <Link to="/about" onClick={closeMenu} className="mobile-menu__link">About</Link>
+          <Link to="/blog" onClick={closeMenu} className="mobile-menu__link">Blog</Link>
+          <Link to="/contact" onClick={closeMenu} className="mobile-menu__link">Contact</Link>
+          <Link to="/pages" onClick={closeMenu} className="mobile-menu__link">Pages</Link>
+        </nav>
+
+        {/* Login / Register with customer icon */}
+        <Link to="/login" className="mobile-menu__login" onClick={closeMenu}>
+          <img src="/icons/customer.svg" alt="" className="mobile-menu__login-icon" />
+          <span>Login / Register</span>
+        </Link>
+
+        {/* Action icons — search, cart, heart — centered and stacked */}
+        <div className="mobile-menu__actions">
+          <button type="button" aria-label="Search" className="mobile-menu__icon-btn">
+            <img src="/icons/search.svg" alt="" className="mobile-menu__svg-icon" />
+          </button>
+
+          <button type="button" aria-label="Shopping cart" className="mobile-menu__icon-btn">
+            <img src="/icons/cart.svg" alt="" className="mobile-menu__svg-icon" />
+          </button>
+
+          <button type="button" aria-label="Wishlist" className="mobile-menu__icon-btn">
+            <img src="/icons/heart.svg" alt="" className="mobile-menu__svg-icon" />
+            <span className="mobile-menu__badge">1</span>
+          </button>
+        </div>
+
+        {/* Breadcrumb at the very bottom — wayfinding cue matching the design */}
+        <nav className="mobile-menu__breadcrumb" aria-label="Breadcrumb">
+          <Link to="/" onClick={closeMenu}>Home</Link>
+          <span aria-hidden="true">›</span>
+          <Link to="/shop" onClick={closeMenu}>Shop</Link>
+        </nav>
+      </div>
     </header>
   );
 }

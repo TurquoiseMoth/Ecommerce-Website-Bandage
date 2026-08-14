@@ -78,6 +78,13 @@
   object-fit: cover;
 }
 
+@media (min-width: 769px) and (max-width: 1024px) {
+  .testimonial-section {
+    gap: 30px;
+    padding: 64px 20px;
+  }
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .testimonial-section {

@@ -6,12 +6,6 @@
   border-radius: 4px;
 }
 
-.product-card__link {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-}
-
 .product-card__image-wrapper {
   width: 100%;
   height: 240px;
@@ -50,28 +44,6 @@
   line-height: 24px;
   letter-spacing: 0.1px;
   text-align: center;
-}
-
-.product-card__price {
-  margin: 0 0 24px;
-  font-size: 28px;
-  font-weight: 700;
-}
-
-.product-card__rating {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.product-card__rating > span:first-child {
-  letter-spacing: 3px;
-  color: #222222;
-}
-
-.product-card__rating-value {
-  color: #666666;
-  font-size: 16px;
 }
 
 .product-card__prices {

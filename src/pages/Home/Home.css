@@ -64,6 +64,10 @@
     padding: 56px 0;
   }
 
+  .featured-products__eyebrow {
+    display: none;
+  }
+
   .featured-products__heading h1 {
     font-size: 24px;
   }

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./FeaturedPosts.css";
 
 const posts = [
@@ -92,7 +93,7 @@ function FeaturedPosts() {
                 </span>
               </div>
 
-              <a href="/blog">Learn More</a>
+              <Link to="/blog">Learn More</Link>
             </div>
           </article>
         ))}

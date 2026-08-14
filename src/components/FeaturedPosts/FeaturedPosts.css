@@ -143,6 +143,17 @@
   color: #737373;
 }
 
+@media (min-width: 769px) and (max-width: 1024px) {
+  .featured-posts {
+    width: min(720px, 92%);
+  }
+
+  .featured-posts__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .featured-posts {
     width: 92%;
