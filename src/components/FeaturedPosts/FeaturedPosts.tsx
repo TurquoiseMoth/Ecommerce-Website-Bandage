@@ -1,10 +1,10 @@
+import { Link } from "react-router-dom";
 import "./FeaturedPosts.css";
 
 const posts = [
   {
     id: 1,
-    image:
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80",
+    image: "/images/fine-bedroom.jpg",
     category: "Google",
     title: "Loudest à la Madison #1",
     description:
@@ -12,8 +12,7 @@ const posts = [
   },
   {
     id: 2,
-    image:
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80",
+    image: "/images/fine-kitchen.jpg",
     category: "Trending",
     title: "Loudest à la Madison #2",
     description:
@@ -21,8 +20,7 @@ const posts = [
   },
   {
     id: 3,
-    image:
-      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=800&q=80",
+    image: "/images/fine-leaf-bedroom.jpg",
     category: "New",
     title: "Loudest à la Madison #3",
     description:
@@ -95,7 +93,7 @@ function FeaturedPosts() {
                 </span>
               </div>
 
-              <a href="/blog">Learn More</a>
+              <Link to="/blog">Learn More</Link>
             </div>
           </article>
         ))}

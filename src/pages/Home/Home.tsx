@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useGetProductsQuery } from "../../services/productsApi";
 import ProductGrid from "../../components/ProductGrid/ProductGrid";
 import Header from "../../components/Header/Header";
@@ -10,8 +11,14 @@ import Footer from "../../components/Footer/Footer";
 import "./Home.css";
 
 function Home() {
+  const [displayCount, setDisplayCount] = useState(10);
   const { data } = useGetProductsQuery();
   const products = data?.products ?? [];
+
+  const handleLoadMore = () => {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    setDisplayCount((prev) => prev + (isMobile ? 5 : 10));
+  };
   return (
     <>
       <Header />
@@ -31,10 +38,13 @@ function Home() {
             </p>
           </div>
 
-          <ProductGrid products={products.slice(0, 10)} columns={5} />
+          <ProductGrid products={products.slice(0, displayCount)} columns={5} />
 
-          <button className="featured-products__load-more">
-            Load More Products
+          <button
+            className="featured-products__load-more"
+            onClick={handleLoadMore}
+          >
+            LOAD MORE PRODUCTS
           </button>
         </section>
         <Services />

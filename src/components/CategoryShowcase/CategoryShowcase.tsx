@@ -1,37 +1,34 @@
-import './CategoryShowcase.css';
+import { Link } from "react-router-dom";
+import "./CategoryShowcase.css";
 
 const categories = [
   {
     id: 1,
-    title: 'Furniture',
+    title: "Furniture",
     items: 5,
-    image:
-      'https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/1.webp',
-    size: 'large',
+    image: "/images/coconut-plate.jpg",
+    size: "large",
   },
   {
     id: 2,
-    title: 'Furniture',
+    title: "Furniture",
     items: 5,
-    image:
-      'https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/1.webp',
-    size: 'wide',
+    image: "/images/flowerpot.jpg",
+    size: "wide",
   },
   {
     id: 3,
-    title: 'Furniture',
+    title: "Furniture",
     items: 5,
-    image:
-      'https://cdn.dummyjson.com/product-images/furniture/knoll-saarinen-executive-conference-chair/1.webp',
-    size: 'small',
+    image: "/images/lamp.jpg",
+    size: "small",
   },
   {
     id: 4,
-    title: 'Furniture',
+    title: "Furniture",
     items: 5,
-    image:
-      'https://cdn.dummyjson.com/product-images/furniture/wooden-bathroom-sink-with-mirror/1.webp',
-    size: 'small',
+    image: "/images/vases.jpg",
+    size: "small",
   },
 ];
 
@@ -52,13 +49,13 @@ function CategoryShowcase() {
           <div className="category-card__content">
             <p>{category.items} Items</p>
 
-            {category.size === 'large' ? (
+            {category.size === "large" ? (
               <h2>{category.title}</h2>
             ) : (
               <h3>{category.title}</h3>
             )}
 
-            <a href="/shop">Read More</a>
+            <Link to="/shop">Read More</Link>
           </div>
         </article>
       ))}

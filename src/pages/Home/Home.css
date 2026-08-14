@@ -15,9 +15,13 @@
 
 .featured-products__eyebrow {
   margin: 0 0 8px;
-  color: #23a6f0;
-  font-size: 14px;
-  font-weight: 700;
+  color: #737373;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.2px;
+  text-align: center;
 }
 
 .featured-products__heading h1 {
@@ -41,6 +45,7 @@
   margin: 48px auto 0;
   padding: 12px 24px;
   border: 1px solid #23a6f0;
+  border-radius: 2.5px;
   background: transparent;
   color: #23a6f0;
   cursor: pointer;
@@ -57,6 +62,10 @@
   .featured-products {
     width: min(92%, 600px);
     padding: 56px 0;
+  }
+
+  .featured-products__eyebrow {
+    display: none;
   }
 
   .featured-products__heading h1 {
