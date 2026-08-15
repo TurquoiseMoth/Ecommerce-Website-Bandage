@@ -94,6 +94,13 @@
   gap: 6px;
 }
 
+.main-nav__shop span {
+  position: relative;
+  top: -2px;
+  display: inline-block;
+  line-height: 1;
+}
+
 .main-nav__actions {
   display: flex;
   align-items: center;
@@ -148,6 +155,10 @@
   display: none;
 }
 
+.main-nav__mobile-actions {
+  display: none;
+}
+
 /* Mobile menu + backdrop are mobile-only: never render on desktop */
 .mobile-menu,
 .mobile-menu-backdrop {
@@ -163,7 +174,9 @@
 /* All three bars share a smooth transform origin at their center */
 .hamburger-icon .bar {
   transform-origin: center;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
 /* When open: top bar rotates to form one diagonal of X */
@@ -184,236 +197,211 @@
 
 /* ─── MOBILE LAYOUT ─────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  /* Hide desktop-only elements */
   .top-bar,
   .main-nav__links,
   .main-nav__actions {
     display: none;
   }
 
-  /* Sticky header so the nav stays visible while scrolling */
   .site-header {
     position: sticky;
     top: 0;
     z-index: 1100;
+    background: #ffffff;
   }
 
-  /* Nav bar */
   .main-nav {
-    min-height: 56px;
-    padding: 0 20px;
+    min-height: 62px;
+    padding: 0 24px;
     background: #ffffff;
-    gap: 16px;
-    border-bottom: 1px solid #ececec;
+    gap: 12px;
+    border: none;
   }
 
   .main-nav__logo {
     color: #252b42;
-    font-size: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
   }
 
-  /* Show the hamburger toggle on mobile */
-  .main-nav__menu-toggle {
+  .main-nav__mobile-actions {
     display: flex;
     align-items: center;
+    gap: 10px;
+    margin-left: auto;
+  }
+
+  .nav-icon-btn {
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+  }
+
+  .nav-icon-btn--mobile {
+    width: 24px;
+    height: 24px;
+    align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+  }
+
+  .nav-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .main-nav__menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
     padding: 0;
-    margin-left: auto;  /* push to far right */
-    border: none;
     background: transparent;
+    border: none;
     cursor: pointer;
   }
 
-  /* ─── Backdrop overlay that dims the page content ───────────────────────── */
-  .mobile-menu-backdrop {
-    display: block;
-    position: fixed;
-    inset: 0;
-    z-index: 1090;
-    background: rgba(0, 0, 0, 0.25);
-    animation: fadeIn 0.25s ease forwards;
+  .main-nav__menu-toggle .hamburger-icon {
+    width: 22px;
+    height: 22px;
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-
-  /* ─── Slide-in menu panel ────────────────────────────────────────────────── */
   .mobile-menu {
-    /* Start off-screen to the right; slide in when --open is added */
-    position: fixed;
-    top: 56px;        /* below the sticky nav bar */
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1095;
     display: flex;
     flex-direction: column;
-    align-items: center;   /* center all children horizontally */
-    gap: 28px;
-    padding: 40px 24px 32px;
+    align-items: center;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
     background: #ffffff;
-    overflow-y: auto;
-
-    /* Hidden state: translated down + invisible */
-    transform: translateY(-10px);
     opacity: 0;
     pointer-events: none;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition:
+      max-height 0.2s ease,
+      opacity 0.2s ease,
+      padding 0.2s ease;
   }
 
-  /* Open state: fully visible and in-place */
   .mobile-menu--open {
-    transform: translateY(0);
+    max-height: 400px;
+    padding: 18px 0 0;
     opacity: 1;
     pointer-events: auto;
   }
 
-  /* ─── Centered vertical nav links ───────────────────────────────────────── */
   .mobile-menu__links {
     display: flex;
     flex-direction: column;
-    align-items: center;  /* horizontally center each link */
-    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     width: 100%;
+    padding: 10px 0 18px;
   }
 
-  /* Base link style – gray, medium-large text, weight 400 per design */
   .mobile-menu__link {
-    color: #737373;
+    color: #7a7a7a;
     font-family: "Montserrat", sans-serif;
-    font-size: 18px;
-    font-weight: 400;   /* designer spec: lighter weight for nav links */
-    line-height: 28px;
-    letter-spacing: 0.2px;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
     text-decoration: none;
     transition: color 0.2s ease;
   }
 
-  .mobile-menu__link:hover {
-    color: #252b42;
-  }
-
-  /* First/active link – dark */
+  .mobile-menu__link:hover,
   .mobile-menu__link--active {
     color: #252b42;
   }
+}
 
-  /* ─── Login / Register row ───────────────────────────────────────────────── */
-  .mobile-menu__login {
-    display: flex;
-    align-items: center;
+@media (width: 375px) {
+  .main-nav {
+    min-height: 58px;
+    padding: 0 16px;
+  }
+
+  .main-nav__logo {
+    font-size: 24px;
+  }
+
+  .main-nav__mobile-actions {
     gap: 8px;
-    color: #23a6f0;         /* brand blue to match screenshot */
-    font-family: "Montserrat", sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: opacity 0.2s ease;
   }
 
-  .mobile-menu__login:hover {
-    opacity: 0.8;
-  }
-
-  /* Tint the customer SVG blue to match the text */
-  .mobile-menu__login-icon {
+  .main-nav__menu-toggle,
+  .nav-icon-btn,
+  .nav-icon-btn--mobile {
     width: 20px;
     height: 20px;
-    object-fit: contain;
-    /* Render the black SVG as the brand blue (#23a6f0) */
-    filter: invert(53%) sepia(96%) saturate(404%) hue-rotate(168deg) brightness(101%) contrast(91%);
   }
 
-  /* ─── Icon action row (search / cart / heart) ────────────────────────────── */
-  .mobile-menu__actions {
-    display: flex;
-    flex-direction: column;  /* stack icons vertically, centered */
-    align-items: center;
+  .nav-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mobile-menu__links {
+    gap: 8px;
+    padding: 8px 0 14px;
+  }
+
+  .mobile-menu__link {
+    font-size: 2.25rem;
+  }
+}
+
+@media (width: 320px) {
+  .main-nav {
+    min-height: 56px;
+    padding: 0 12px;
+  }
+
+  .main-nav__logo {
+    font-size: 22px;
+  }
+
+  .main-nav__mobile-actions {
+    gap: 6px;
+  }
+
+  .mobile-menu__link {
+    font-size: 2rem;
+  }
+}
+
+@media (width: 1366px) {
+  .main-nav {
+    min-height: 78px;
+    padding: 0 36px;
+  }
+
+  .main-nav__links {
+    margin-left: 48px;
+    gap: 20px;
+  }
+
+  .main-nav__actions {
     gap: 16px;
   }
+}
 
-  /* Shared base for icon buttons and the cart link */
-  .mobile-menu__icon-btn {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    text-decoration: none; /* for the Link variant */
+@media (width: 1920px) {
+  .main-nav {
+    min-height: 82px;
+    padding: 0 44px;
   }
 
-  /* The actual SVG image inside each button */
-  .mobile-menu__svg-icon {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    /* Tint all icons the same brand blue */
-    filter: invert(53%) sepia(96%) saturate(404%) hue-rotate(168deg) brightness(101%) contrast(91%);
-    transition: filter 0.2s ease;
+  .main-nav__links {
+    margin-left: 72px;
+    gap: 26px;
   }
 
-  .mobile-menu__icon-btn:hover .mobile-menu__svg-icon {
-    filter: invert(53%) sepia(96%) saturate(404%) hue-rotate(168deg) brightness(80%) contrast(91%);
-  }
-
-  /* Badge (cart / wishlist count) */
-  .mobile-menu__badge {
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    min-width: 16px;
-    height: 16px;
-    padding: 0 3px;
-    border-radius: 50%;
-    background: transparent;
-    color: #23a6f0;
-    font-size: 10px;
-    font-weight: 700;
-    line-height: 16px;
-    text-align: center;
-  }
-
-  /* ─── Breadcrumb pinned to the bottom of the overlay ──────────────────────── */
-  /* margin-top: auto pushes it to the bottom regardless of content height */
-  .mobile-menu__breadcrumb {
-    margin-top: auto;
-    padding-top: 16px;
-    border-top: 1px solid #ececec;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .mobile-menu__breadcrumb a {
-    color: #737373;
-    font-size: 14px;
-    font-weight: 400;
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-
-  .mobile-menu__breadcrumb a:first-child {
-    color: #252b42;  /* "Home" is the current context, rendered darker */
-  }
-
-  .mobile-menu__breadcrumb a:hover {
-    color: #252b42;
-  }
-
-  .mobile-menu__breadcrumb span {
-    color: #bdbdbd;
-    font-size: 16px;
-    line-height: 1;
+  .main-nav__actions {
+    gap: 20px;
   }
 }

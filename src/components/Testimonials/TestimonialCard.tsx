@@ -1,5 +1,17 @@
 import "./TestimonialCard.css";
 
+const galleryImages = [
+  "/images/unsplash_0y8p69vwIYM.png",
+  "/images/unsplash_1R1ecHV4i0Y.png",
+  "/images/unsplash_6_dx4H4yi1Y.png",
+  "/images/unsplash_ah7yIXWrtKs.png",
+  "/images/unsplash_GHztzvLLOdQ.png",
+  "/images/unsplash_jo40QKbxUP0.png",
+  "/images/unsplash_QLGA5Zv3doo.png",
+  "/images/unsplash_rhn8ff1G_QY.png",
+  "/images/unsplash_UUTOuXqaExk.png",
+];
+
 function TestimonialCard() {
   return (
     <section className="testimonial-section">
@@ -32,15 +44,13 @@ function TestimonialCard() {
 
       {/* RIGHT COLUMN: 3x3 Image Gallery */}
       <div className="testimonial__gallery">
-        <img src="https://picsum.photos/200?random=1" alt="Gallery 1" />
-        <img src="https://picsum.photos/200?random=2" alt="Gallery 2" />
-        <img src="https://picsum.photos/200?random=3" alt="Gallery 3" />
-        <img src="https://picsum.photos/200?random=4" alt="Gallery 4" />
-        <img src="https://picsum.photos/200?random=5" alt="Gallery 5" />
-        <img src="https://picsum.photos/200?random=6" alt="Gallery 6" />
-        <img src="https://picsum.photos/200?random=7" alt="Gallery 7" />
-        <img src="https://picsum.photos/200?random=8" alt="Gallery 8" />
-        <img src="https://picsum.photos/200?random=9" alt="Gallery 9" />
+        {galleryImages.map((image, index) => (
+          <img
+            key={`${image}-${index}`}
+            src={image}
+            alt={`Gallery ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   );
