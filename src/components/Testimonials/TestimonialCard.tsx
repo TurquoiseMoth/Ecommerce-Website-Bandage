@@ -1,6 +1,33 @@
+import { useEffect, useState } from "react";
 import "./TestimonialCard.css";
 
+interface ProductImageItem {
+  id: number;
+  thumbnail: string;
+}
+
 function TestimonialCard() {
+  const [galleryImages, setGalleryImages] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchGalleryImages = async () => {
+      try {
+        const response = await fetch("https://dummyjson.com/products?limit=9");
+        const data = await response.json();
+        const images = (data.products ?? [])
+          .map((product: ProductImageItem) => product.thumbnail)
+          .filter(Boolean)
+          .slice(0, 9);
+
+        setGalleryImages(images);
+      } catch {
+        setGalleryImages([]);
+      }
+    };
+
+    fetchGalleryImages();
+  }, []);
+
   return (
     <section className="testimonial-section">
       {/* LEFT COLUMN: Testimonial Content */}
@@ -32,15 +59,21 @@ function TestimonialCard() {
 
       {/* RIGHT COLUMN: 3x3 Image Gallery */}
       <div className="testimonial__gallery">
-        <img src="https://picsum.photos/200?random=1" alt="Gallery 1" />
-        <img src="https://picsum.photos/200?random=2" alt="Gallery 2" />
-        <img src="https://picsum.photos/200?random=3" alt="Gallery 3" />
-        <img src="https://picsum.photos/200?random=4" alt="Gallery 4" />
-        <img src="https://picsum.photos/200?random=5" alt="Gallery 5" />
-        <img src="https://picsum.photos/200?random=6" alt="Gallery 6" />
-        <img src="https://picsum.photos/200?random=7" alt="Gallery 7" />
-        <img src="https://picsum.photos/200?random=8" alt="Gallery 8" />
-        <img src="https://picsum.photos/200?random=9" alt="Gallery 9" />
+        {galleryImages.length > 0
+          ? galleryImages.map((image, index) => (
+              <img
+                key={`${image}-${index}`}
+                src={image}
+                alt={`Gallery ${index + 1}`}
+              />
+            ))
+          : Array.from({ length: 9 }).map((_, index) => (
+              <img
+                key={`fallback-${index}`}
+                src="/images/testimonial user.png"
+                alt={`Gallery ${index + 1}`}
+              />
+            ))}
       </div>
     </section>
   );
