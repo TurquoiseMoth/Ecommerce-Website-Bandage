@@ -1,33 +1,18 @@
-import { useEffect, useState } from "react";
 import "./TestimonialCard.css";
 
-interface ProductImageItem {
-  id: number;
-  thumbnail: string;
-}
+const galleryImages = [
+  "/images/unsplash_0y8p69vwIYM.png",
+  "/images/unsplash_1R1ecHV4i0Y.png",
+  "/images/unsplash_6_dx4H4yi1Y.png",
+  "/images/unsplash_ah7yIXWrtKs.png",
+  "/images/unsplash_GHztzvLLOdQ.png",
+  "/images/unsplash_jo40QKbxUP0.png",
+  "/images/unsplash_QLGA5Zv3doo.png",
+  "/images/unsplash_rhn8ff1G_QY.png",
+  "/images/unsplash_UUTOuXqaExk.png",
+];
 
 function TestimonialCard() {
-  const [galleryImages, setGalleryImages] = useState<string[]>([]);
-
-  useEffect(() => {
-    const fetchGalleryImages = async () => {
-      try {
-        const response = await fetch("https://dummyjson.com/products?limit=9");
-        const data = await response.json();
-        const images = (data.products ?? [])
-          .map((product: ProductImageItem) => product.thumbnail)
-          .filter(Boolean)
-          .slice(0, 9);
-
-        setGalleryImages(images);
-      } catch {
-        setGalleryImages([]);
-      }
-    };
-
-    fetchGalleryImages();
-  }, []);
-
   return (
     <section className="testimonial-section">
       {/* LEFT COLUMN: Testimonial Content */}
@@ -59,21 +44,13 @@ function TestimonialCard() {
 
       {/* RIGHT COLUMN: 3x3 Image Gallery */}
       <div className="testimonial__gallery">
-        {galleryImages.length > 0
-          ? galleryImages.map((image, index) => (
-              <img
-                key={`${image}-${index}`}
-                src={image}
-                alt={`Gallery ${index + 1}`}
-              />
-            ))
-          : Array.from({ length: 9 }).map((_, index) => (
-              <img
-                key={`fallback-${index}`}
-                src="/images/testimonial user.png"
-                alt={`Gallery ${index + 1}`}
-              />
-            ))}
+        {galleryImages.map((image, index) => (
+          <img
+            key={`${image}-${index}`}
+            src={image}
+            alt={`Gallery ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   );
